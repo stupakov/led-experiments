@@ -8,7 +8,13 @@ Use `raspberrypi.local:5901` to connect.
 
 `ssh pi@raspberrypi.local  #password: raspberry`
 
+## Fadecandy
+
+Build the fadecandy server binary by following instructions in `src/fadecandy/server/README.md`
+
 ## Setting up ssh tunnel from raspberry pi
+
+This can be done if you need to send Open Pixel Control data from Processing to the simulator on the host machine (rather than to the `fcserver` running on the Raspberry Pi)
 
 First, ensure the workstation has access enabled:
 ```
@@ -17,25 +23,9 @@ System Preferences | Sharing | Internet sharing
 - enable internet sharing for RNDIS/Ethernet Gadget
 ```
 
-### Discover the IP address of the workstation
-
-```
-ifconfig
-ping -b <inet address of usb0>
-```
-
-### Establish the tunnel
+Then establish the tunnel:
 
 `ssh -nNT -L 7890:localhost:7890 user@ip`
-
-or
-
-`ssh -nNT -L 7890:localhost:7890 user@hostname.lan`
-
-## Fadecandy
-
-Build the fadecandy server binary by following instructions in `src/fadecandy/server/README.md`
-
 ## TODO
 
 [_] autostart scripts on rpi
